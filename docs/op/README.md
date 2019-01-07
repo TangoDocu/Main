@@ -4,10 +4,10 @@
 > Complete list of available web service operations
 
 ## Resource management
-- Get_Vehicles
-- Get_Drivers
-- Get_Trailer
+### Get_Vehicles
+### Get_Drivers
+### Get_Trailer
 
 ## Planning
-- Insert_Planning
+### Insert_Planning
   
