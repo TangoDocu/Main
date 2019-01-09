@@ -2,6 +2,7 @@
 # Insert_Geofence
 
 > The creation of circular zones that can trigger different kind of alarms: alarms when entering and/or leaving, alarms when an activity takes more than x minutes in this zone or alarms when not in the zone before a certain date and time.
+>
 > - It is not possible to create polygone geofence via the web services, this needs to be done via TX-CONNECT.
 
 ## Version info
@@ -47,19 +48,65 @@ Derived from result object, contains Errors and Warnings: See [result object](/o
 		-  GeoZoneSeq: _int64_
 		-  GeoZoneName: _string_
 
-<!--## Example code
-```csharp
-	IWS.InterfaceVehicleSelection_V2 vehSel = new IWS.InterfaceVehicleSelection_V2();
-	...
-```-->
-
 ## Example xml
-**Request**
-```XML
 
+**Request**
+
+```XML
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tran="http://transics.org">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tran:Insert_GeoFence_V2>
+         <tran:Login>
+            ...
+         </tran:Login>
+         <tran:GeoFenceInsert>
+            <tran:Active>true</tran:Active>
+            <tran:GeoValidityDate>
+               <tran:BeginDate>2019-01-08T09:30:00</tran:BeginDate>
+               <tran:EndDate>2029-01-08T00:00:00</tran:EndDate>
+            </tran:GeoValidityDate>
+            <tran:Name>Lisboa customer</tran:Name>
+            <tran:NotifyHomeBase>true</tran:NotifyHomeBase>
+            <tran:GeoFenceDirection>ENTER_LEAVE</tran:GeoFenceDirection>
+            <tran:GeoZones>
+               <tran:InterfaceGeoZone_V2>
+                  <tran:Name>Main site</tran:Name>
+                  <tran:Position>
+                     <tran:Longitude>-9.179815</tran:Longitude>
+                     <tran:Latitude>38.705459</tran:Latitude>
+                  </tran:Position>
+                  <tran:Radius>500</tran:Radius>
+               </tran:InterfaceGeoZone_V2>
+            </tran:GeoZones>
+         </tran:GeoFenceInsert>
+      </tran:Insert_GeoFence_V2>
+   </soapenv:Body>
+</soapenv:Envelope>
 ```
 
-**Response**
-```XML
 
+
+**Response**
+
+```XML
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <Insert_GeoFence_V2Response xmlns="http://transics.org">
+         <Insert_GeoFence_V2Result Executiontime="0.268">
+            <Errors/>
+            <Warnings/>
+            <GeoFenceID>6143</GeoFenceID>
+            <GeoFenceName>Lisboa customer</GeoFenceName>
+            <GeoZones>
+               <InsertGeoZoneResult>
+                  <GeoZoneTNR>7153</GeoZoneTNR>
+                  <GeoZoneSeq>1</GeoZoneSeq>
+                  <GeoZoneName>Main site</GeoZoneName>
+               </InsertGeoZoneResult>
+            </GeoZones>
+         </Insert_GeoFence_V2Result>
+      </Insert_GeoFence_V2Response>
+   </soap:Body>
+</soap:Envelope>
 ```

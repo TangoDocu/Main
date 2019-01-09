@@ -34,12 +34,6 @@ Derived from result object, contains Errors and Warnings: See [result object](/o
 		- Code: _string_
 		- Filter: _string_
 
-<!--## Example code
-```csharp
-	IWS.InterfaceVehicleSelection_V2 vehSel = new IWS.InterfaceVehicleSelection_V2();
-	...
-```-->
-
 ## Example xml
 **Request**
 ```XML
